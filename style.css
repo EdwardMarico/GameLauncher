@@ -1,0 +1,38 @@
+:root {
+    --bg-main: #1e1e24;
+    --bg-container: #141419;
+    --text-color: #ffffff;
+    --accent-color: #007acc;
+    --card-bg: #2a2a35;
+    --border-color: #333;
+}
+
+/* ธีมสว่าง */
+body.light-theme {
+    --bg-main: #f0f0f5;
+    --bg-container: #ffffff;
+    --text-color: #1e1e24;
+    --accent-color: #005a9e;
+    --card-bg: #e0e0e8;
+    --border-color: #ccc;
+}
+
+/* เปลี่ยนจากเดิม th, td { ... } ให้เป็นดังนี้ */
+th, td { 
+    padding: 12px; 
+    border-bottom: 1px solid var(--border-color); 
+    text-align: left; 
+    color: var(--text-color); /* เพิ่มบรรทัดนี้เพื่อให้สีเปลี่ยนตามธีม */
+}
+
+body { font-family: 'Segoe UI', sans-serif; background: var(--bg-main); color: var(--text-color); margin: 0; transition: 0.3s; }
+.nav { background: var(--bg-container); padding: 20px; display: flex; gap: 20px; border-bottom: 2px solid var(--border-color); }
+.nav a { color: #aaa; text-decoration: none; font-weight: bold; cursor: pointer; }
+.nav a.active { color: var(--accent-color); }
+.nav a:hover { color: var(--text-color); }
+
+.container { max-width: 800px; margin: 30px auto; background: var(--bg-container); padding: 25px; border-radius: 10px; }
+.btn-dl { background: var(--accent-color); color: white; padding: 8px 15px; text-decoration: none; border-radius: 5px; font-weight: bold; }
+table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+th, td { padding: 12px; border-bottom: 1px solid var(--border-color); text-align: left; }
+.card { background: var(--card-bg); padding: 15px; border-radius: 8px; margin-bottom: 15px; }
