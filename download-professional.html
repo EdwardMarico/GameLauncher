@@ -1,0 +1,61 @@
+<head>
+    <title>GameLauncher-Download</title>
+    <link rel="icon" href="data/gamelauncher_icon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="nav">
+        <a href="index.html">🏠 Home</a>
+        <a href="download-visual.html">👁️ Visual</a>
+        <a href="download-professional.html">💼 Professional</a>
+        <a href="settings.html">⚙️ Settings</a>
+    </div>
+    <div class="container">
+        <h2>📂 Professional Versions</h2>
+        <table>
+            <thead><tr><th>Version</th><th>File</th><th>Action</th></tr></thead>
+            <tbody id="dlTable"></tbody>
+        </table>
+    </div>
+
+    <script>
+        fetch('GameLauncher-download/versions.json')
+            .then(res => res.json())
+            .then(data => {
+                const tbody = document.getElementById('dlTable');
+                
+                // 1. กรองเอาเฉพาะหมวด Professional
+                const filtered = data.filter(item => item.category === "Professional");
+                
+                // 2. เรียงลำดับจาก order มากไปน้อย (ล่าสุดอยู่บน)
+                filtered.sort((a, b) => b.order - a.order);
+                
+                // 3. แสดงผลลงในตาราง
+                filtered.forEach((item, index) => {
+                    // ใช้ class badge-rec ที่เราเตรียมไว้ใน style.css
+                    const isRecommended = (index === 0) ? '<span class="badge-rec">Recommended</span>' : '';
+                    
+                    tbody.innerHTML += `<tr>
+                        <td>${item.version} ${isRecommended}</td>
+                        <td>${item.file}</td>
+                        <td><a href="GameLauncher-download/Professional/${item.file}" class="btn-dl" download>Download</a></td>
+                    </tr>`;
+                });
+            });
+    </script>
+    <script>
+        // โหลดค่าธีมและสีที่เซฟไว้ทันทีที่เปิดหน้าเว็บ
+        window.onload = () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-theme');
+            }
+            
+            const savedColor = localStorage.getItem('accent');
+            if (savedColor) {
+                document.documentElement.style.setProperty('--accent-color', savedColor);
+            }
+        };
+    </script>
+</body>

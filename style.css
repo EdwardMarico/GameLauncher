@@ -25,6 +25,17 @@ th, td {
     color: var(--text-color); /* เพิ่มบรรทัดนี้เพื่อให้สีเปลี่ยนตามธีม */
 }
 
+/* เพิ่มใน style.css */
+.badge-rec {
+    background: #00a86b;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
 body { font-family: 'Segoe UI', sans-serif; background: var(--bg-main); color: var(--text-color); margin: 0; transition: 0.3s; }
 .nav { background: var(--bg-container); padding: 20px; display: flex; gap: 20px; border-bottom: 2px solid var(--border-color); }
 .nav a { color: #aaa; text-decoration: none; font-weight: bold; cursor: pointer; }
